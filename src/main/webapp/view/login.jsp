@@ -31,7 +31,7 @@
                     <p>Introduce tus credenciales para iniciar sesión para ingresar a DocuDigitalSDS.</p>
                 </div>
                 
-                <form action="/docudigitalsds/LoginController" method="get">
+                <form action="/docudigitalsds/LoginController" method="post">
 
                     <div class="form-control pb-2">
                         <label class="label text-white font-bold">

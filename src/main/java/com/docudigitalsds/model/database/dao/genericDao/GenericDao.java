@@ -8,6 +8,8 @@ import java.util.List;
 
 public abstract class GenericDao<T> implements Dao<T> {
 
+    //In this class, the methods that are common to all the DAOs are implemented.
+
     protected Connection connection;
 
     public GenericDao(Connection connection) {
