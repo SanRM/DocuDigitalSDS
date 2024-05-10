@@ -1,67 +1,34 @@
 import java.sql.Connection;
-import java.sql.SQLException;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import com.docudigitalsds.model.database.DatabaseConnection;
-import com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionUsuario.UsuarioDao;
-import com.docudigitalsds.model.entities.gestionUsuario.Usuario;
+import com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionDocumento.UbicacionFisicaDao;
+import com.docudigitalsds.model.entities.gestionDocumento.UbicacionFisica;
 
 public class appTest {
 
-    private static Usuario authenticate(String email, String password) {
+    static List<String> getUbicacionesFisicas() {
 
-        Usuario usuario = null;
-        Connection connection = null;
-    
-        try {
-            DatabaseConnection dbConnection = new DatabaseConnection();
-            connection = dbConnection.getConnection();
-    
-            UsuarioDao usuarioDao = new UsuarioDao(connection);
-            usuario = usuarioDao.getUsuarioByEmailAndPassword(connection, email, password);
-        
-        } catch (SQLException e) {
-            System.out.println("Error: " + e.getMessage());
-            e.printStackTrace();
+        DatabaseConnection dbConnection = new DatabaseConnection();
+        Connection connection = dbConnection.getConnection();
 
-        } finally {
-            if (connection != null) {
-                try {
-                    connection.close();
-                } catch (SQLException e) {
-                    System.out.println("Error closing connection: " + e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-        }
-        
-        return usuario;
+        UbicacionFisicaDao ubicacionFisicaDao = new UbicacionFisicaDao(connection);
+
+        List<UbicacionFisica> ubicaciones = ubicacionFisicaDao.getAll();
+
+        List<String> ubicacionesStr = ubicaciones.stream()
+            .map(ubicacion -> "ID: " + ubicacion.getIdUbicacionFisica() + ", Nombre: " + ubicacion.getNombre())
+            .collect(Collectors.toList());
+
+        return ubicacionesStr;
     }
 
     public static void main(String[] args) {
 
-        // Ingresa el email y la contraseña del usuario de prueba
-        String email = "juan.perez@example.com";
-        String password = "1234";
-        // ---------------------------------------------
+        List<String> ubicaciones = getUbicacionesFisicas();
 
-        System.out.println("Email: " + email);
-        System.out.println("Password: " + password);
-
-        Usuario usuario = authenticate(email, password);
-
-        if (usuario != null) {
-
-            if (usuario.getIdRoles() == 1) {
-                System.out.println("Redirect to admin dashboard");
-            } else if (usuario.getIdRoles() == 2) {
-                System.out.println("Redirect to user dashboard");
-            }
-
-        } else {
-
-            System.out.println("Error: Redirect to login page");
-
-        }
+        System.out.println(ubicaciones);
 
         // //2. Metodo aprovado | Crear conexion a la base de datos
         // DatabaseConnection dbConnection = new DatabaseConnection();
