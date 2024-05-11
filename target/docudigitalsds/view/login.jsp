@@ -10,6 +10,7 @@
         type="text/css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+
 </head>
 
 <body class="bg-base-100 flex flex-col items-center justify-center min-h-screen">
@@ -40,8 +41,8 @@
                                 aria-label="Modo claro" value="cupcake" /></li>
                     </ul>
                 </div>
-
-                <button class="btn btn-s h-5 ml-3" onclick="location.href='/docudigitalsds/view/welcome.html';">
+                
+                <button class="btn btn-s h-5 ml-3" onclick="location.href='/docudigitalsds/view/adminView.html';">
                     <span class="material-symbols-outlined">home</span>
                     Página principal
                 </button>

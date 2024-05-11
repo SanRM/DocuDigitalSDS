@@ -1,11 +1,11 @@
-package com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionDocumento;
+package com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao;
 
-import com.docudigitalsds.model.database.dao.genericDao.GenericDao;
+import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionDocumento.Documento;
 
 import java.sql.*;
 
-public class DocumentoDao extends GenericDao<Documento> {
+public class DocumentoDao extends Dao<Documento> {
 
     public DocumentoDao(Connection connection) {
         super(connection);
@@ -24,6 +24,7 @@ public class DocumentoDao extends GenericDao<Documento> {
         documento.setIdCategorias(rs.getInt("idCategorias"));
         documento.setIdFechasRetencionlegal(rs.getInt("idFechasRetencionlegal"));
         documento.setIdUbicacionFisica(rs.getInt("idUbicacionFisica"));
+        documento.setArchivo(rs.getBytes("archivo"));
         return documento;
     }
 
@@ -48,6 +49,7 @@ public class DocumentoDao extends GenericDao<Documento> {
         ps.setInt(7, documento.getIdCategorias());
         ps.setInt(8, documento.getIdFechasRetencionlegal());
         ps.setInt(9, documento.getIdUbicacionFisica());
+        ps.setBytes(10, documento.getArchivo());
     }
 
     @Override

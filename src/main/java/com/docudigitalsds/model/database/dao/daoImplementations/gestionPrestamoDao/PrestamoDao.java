@@ -1,11 +1,11 @@
-package com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionPrestamo;
+package com.docudigitalsds.model.database.dao.daoImplementations.gestionPrestamoDao;
 
-import com.docudigitalsds.model.database.dao.genericDao.GenericDao;
+import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionPrestamo.Prestamo;
 
 import java.sql.*;
 
-public class PrestamoDao extends GenericDao<Prestamo> {
+public class PrestamoDao extends Dao<Prestamo> {
 
     public PrestamoDao(Connection connection) {
         super(connection);

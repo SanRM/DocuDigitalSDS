@@ -1,11 +1,11 @@
-package com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionDocumento;
+package com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao;
 
-import com.docudigitalsds.model.database.dao.genericDao.GenericDao;
+import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionDocumento.FechaRetencionLegal;
 
 import java.sql.*;
 
-public class FechaRetencionLegalDao extends GenericDao<FechaRetencionLegal> {
+public class FechaRetencionLegalDao extends Dao<FechaRetencionLegal> {
 
     public FechaRetencionLegalDao(Connection connection) {
         super(connection);

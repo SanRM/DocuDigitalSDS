@@ -13,6 +13,7 @@ public class Documento {
     private int idCategorias;
     private int idFechasRetencionlegal;
     private int idUbicacionFisica;
+    private byte[] archivo;
 
     // getters y setters...
     public int getIdDocumento() {
@@ -93,6 +94,14 @@ public class Documento {
 
     public void setIdUbicacionFisica(int idUbicacionFisica) {
         this.idUbicacionFisica = idUbicacionFisica;
+    }
+
+    public byte[] getArchivo() {
+        return archivo;
+    }
+
+    public void setArchivo(byte[] archivo) {
+        this.archivo = archivo;
     }
 
 }

@@ -25,7 +25,6 @@
     <url-pattern>/AdminController</url-pattern>
 </servlet-mapping>
 
-
 <servlet>
     <servlet-name>HelloController</servlet-name>
     <servlet-class>com.docudigitalsds.controller.HelloController</servlet-class>

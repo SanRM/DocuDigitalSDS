@@ -1,11 +1,11 @@
-package com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionDocumento;
+package com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao;
 
-import com.docudigitalsds.model.database.dao.genericDao.GenericDao;
+import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionDocumento.Categoria;
 
 import java.sql.*;
 
-public class CategoriaDao extends GenericDao<Categoria> {
+public class CategoriaDao extends Dao<Categoria> {
 
     public CategoriaDao(Connection connection) {
         super(connection);

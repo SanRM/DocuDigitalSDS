@@ -35,6 +35,10 @@
                 <div class="flex-3 hidden xl:block">
 
                     <ul class="menu menu-horizontal items-center">
+                        <!-- Navbar menu content here -->
+                        <button class="btn btn-s h-5" onclick="location.href='/docudigitalsds/view/adminView.jsp'">
+                            <span class="material-symbols-outlined">home</span>
+                        </button>
 
                         <div class="dropdown dropdown-end ml-3">
                             <div tabindex="0" role="button" class="btn btn-n">
@@ -54,10 +58,7 @@
                             </ul>
                         </div>
                         
-                        <button class="btn btn-s btn-warning btn-outline h-5 ml-3" onclick="location.href='/docudigitalsds/view/documentCrudView.jsp';">
-                            <span class="material-symbols-outlined">Description</span>
-                            Documentos
-                        </button>
+
 
                         <button class="btn btn-s btn-info btn-outline h-5 ml-3">
                             <span class="material-symbols-outlined">Event</span>
@@ -81,66 +82,72 @@
 
             </div>
 
+            <div class="grid grid-cols-3 gap-5 mt-5 ml-5 mr-5">
 
-            <div class="flex">
+                <div class="bg-base-300 p-5 rounded-lg content-center">
 
-                <div class="w-full mt-5 ml-5 mr-5">
-                    <div role="tablist" class="tabs tabs-boxed w-full menu-lg tabs-lg bg-base-300">
-                        
-                        
-                        <% 
-                        Map<String, Map<String, List<Documento>>> documentosPorUbicacionYCategoria = (Map<String, Map<String, List<Documento>>>)session.getAttribute("documentosPorUbicacionYCategoria");
-                        if (documentosPorUbicacionYCategoria != null) {
-                            int i = 0;
-                            for(Map.Entry<String, Map<String, List<Documento>>> entryUbicacion : documentosPorUbicacionYCategoria.entrySet()) {
-                                String ubicacion = entryUbicacion.getKey();
-                                Map<String, List<Documento>> documentosPorCategoria = entryUbicacion.getValue();
-                        %>
+                    <h2 class="text-lg font-bold">Categorias</h2>
+                    <p>En este panel puedes agregar, modificar y eliminar categorias</p>
 
-
-                                <input type="radio" name="my_tabs_2" role="tab" class="tab font-bold" aria-label="<%=ubicacion%>" <%= i == 0 ? "checked" : "" %> />
-
-                                <div role="tabpanel" class="tab-content bg-base-300 border-base-300 rounded-box">
-
-                                    <ul class="menu bg-base-200 rounded-lg  w-full">
-                                        <% for(Map.Entry<String, List<Documento>> entryCategoria : documentosPorCategoria.entrySet()) {
-                                            String categoria = entryCategoria.getKey();
-                                            List<Documento> documentos = entryCategoria.getValue();
-                                        %>
-                                            <li>
-                                                <details open>
-                                                    <summary>
-                                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 12.75V12A2.25 2.25 0 014.5 9.75h15A2.25 2.25 0 0121.75 12v.75m-8.69-6.44l-2.12-2.12a1.5 1.5 0 00-1.061-.44H4.5A2.25 2.25 0 002.25 6v12a2.25 2.25 0 002.25 2.25h15A2.25 2.25 0 0021.75 18V9a2.25 2.25 0 00-2.25-2.25h-5.379a1.5 1.5 0 01-1.06-.44z" /></svg>
-                                                        <%=categoria%>
-                                                    </summary>
-                                                    <ul>
-                                                        <% for(Documento documento : documentos) { %>
-                                                            <li><a>
-                                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-4 h-4"><path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 00-3.375-3.375h-1.5A1.125 1.125 0 0113.5 7.125v-1.5a3.375 3.375 0 00-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 00-9-9z" /></svg>
-                                                                <%=documento.getTitulo()%>
-                                                            </a></li>
-                                                        <% } %>
-                                                    </ul>
-                                                </details>
-                                            </li>
-                                        <% } %>
-                                    </ul>
+                        <div class="join w-full flex mt-5">
+                            <div class="flex-grow">
+                                <div>
+                                    <input class="input input-bordered join-item w-full" placeholder="Ingresa el nombre de la categoria"/>
                                 </div>
-                        <% 
-                                i++;
-                            }
-                        }
-                        %>
+                            </div>
+                            <div>
+                                <button class="btn btn- join-item text-error">Eliminar</button>
+                            </div>
+                            <div>
+                                <button class="btn btn- join-item text-accent">Guardar</button>
+                            </div>
+                        </div>
 
-                    </div>
+                    <div class="divider"></div>
+                    
+                    <button id="openModal" onclick="my_modal_2.showModal()" class="btn btn-sm btn-success w-full" onclick="my_modal_2.showModal()">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                        </svg>
+                        Agregar ubicación
+                    </button>
+                    
+                    <dialog id="my_modal_2" class="modal">
+                        <div class="modal-box pb-7">
+                            <h3 class="font-bold text-lg pb-5">Agregar nueva ubicación</h3>
+                            <form method="post" action="/docudigitalsds/AdminController"> <!-- Reemplaza esto con la ruta a tu AdminController -->
+                                <input type="text" name="nombre" placeholder="Type here" class="input input-bordered w-full max-w " />
+                                <div class="card-actions justify-end pt-7">
+                                    <button type="submit" class="btn ml-5 btn-sm btn-success">
+                                        Enviar
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                        <form method="dialog" class="modal-backdrop">
+                            <button>close</button>
+                        </form>
+                    </dialog>
+                    
+                </div>
+                
+                <div class="bg-base-300 p-5 rounded-lg">
+                    <h2 class="text-lg font-bold">Panel 2</h2>
+                    <p>Contenido del panel 2</p>
                 </div>
 
-                <!-- <label class="input input-bordered flex items-center gap-2 m-5">
-                    <input type="text" class="grow" placeholder="Buscar" />
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="currentColor" class="w-4 h-4 opacity-70"><path fill-rule="evenodd" d="M9.965 11.026a5 5 0 1 1 1.06-1.06l2.755 2.754a.75.75 0 1 1-1.06 1.06l-2.755-2.754ZM10.5 7a3.5 3.5 0 1 1-7 0 3.5 3.5 0 0 1 7 0Z" clip-rule="evenodd" /></svg>
-                </label> -->
-
+                <div class="bg-base-300 p-5 rounded-lg">
+                    <h2 class="text-lg font-bold">Panel 3</h2>
+                    <p>Contenido del panel 3</p>
+                </div>
+                
             </div>
+
+            <div class="bg-base-300 p-5 mt-5 ml-5 mr-5 rounded-lg">
+                <h2 class="text-lg font-bold">Crear documento</h2>
+                <p>Contenido del panel 1</p>
+            </div>
+
 
         </div>
         <div class="drawer-side">

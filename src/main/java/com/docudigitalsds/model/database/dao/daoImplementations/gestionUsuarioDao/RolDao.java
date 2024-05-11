@@ -1,11 +1,11 @@
-package com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionUsuario;
+package com.docudigitalsds.model.database.dao.daoImplementations.gestionUsuarioDao;
 
-import com.docudigitalsds.model.database.dao.genericDao.GenericDao;
+import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionUsuario.Rol;
 
 import java.sql.*;
 
-public class RolDao extends GenericDao<Rol> {
+public class RolDao extends Dao<Rol> {
 
     public RolDao(Connection connection) {
         super(connection);

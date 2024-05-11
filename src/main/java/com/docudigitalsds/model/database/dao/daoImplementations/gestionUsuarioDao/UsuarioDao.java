@@ -1,11 +1,11 @@
-package com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionUsuario;
+package com.docudigitalsds.model.database.dao.daoImplementations.gestionUsuarioDao;
 
-import com.docudigitalsds.model.database.dao.genericDao.GenericDao;
+import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionUsuario.Usuario;
 
 import java.sql.*;
 
-public class UsuarioDao extends GenericDao<Usuario> {
+public class UsuarioDao extends Dao<Usuario> {
 
     public UsuarioDao(Connection connection) {
         super(connection);

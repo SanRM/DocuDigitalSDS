@@ -1,79 +1,25 @@
 import java.sql.Connection;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import com.docudigitalsds.model.database.DatabaseConnection;
-import com.docudigitalsds.model.database.dao.genericDao.daoImplementations.gestionDocumento.UbicacionFisicaDao;
-import com.docudigitalsds.model.entities.gestionDocumento.UbicacionFisica;
+import com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao.CategoriaDao;
 
-public class appTest {
+public class AppTest {
 
-    static List<String> getUbicacionesFisicas() {
+    private static Connection connection;
 
+    public AppTest() {
+        // this.request = request;
         DatabaseConnection dbConnection = new DatabaseConnection();
-        Connection connection = dbConnection.getConnection();
-
-        UbicacionFisicaDao ubicacionFisicaDao = new UbicacionFisicaDao(connection);
-
-        List<UbicacionFisica> ubicaciones = ubicacionFisicaDao.getAll();
-
-        List<String> ubicacionesStr = ubicaciones.stream()
-            .map(ubicacion -> "ID: " + ubicacion.getIdUbicacionFisica() + ", Nombre: " + ubicacion.getNombre())
-            .collect(Collectors.toList());
-
-        return ubicacionesStr;
+        AppTest.connection = dbConnection.getConnection();
     }
+
+    
 
     public static void main(String[] args) {
 
-        List<String> ubicaciones = getUbicacionesFisicas();
+        new AppTest();
 
-        System.out.println(ubicaciones);
-
-        // //2. Metodo aprovado | Crear conexion a la base de datos
-        // DatabaseConnection dbConnection = new DatabaseConnection();
-        // Connection connection = dbConnection.getConnection();
-
-        // //Crear un nuevo DocumentoDao
-        // DocumentoDao documentoDao = new DocumentoDao(connection);
-
-        // //2. Metodo aprovado | Crear un nuevo DocumentoDao
-
-        // Documento documento = new Documento();
-        // documento.setTitulo("Documento de prueba #2");
-        // documento.setFechaCreacion(new Timestamp(System.currentTimeMillis()));
-        // documento.setFechaUltimaEdicion(new Timestamp(System.currentTimeMillis()));
-        // documento.setDescripcion("Este es un documento de prueba #2");
-        // documento.setTamaño(2.0);
-        // documento.setNumeroDeFolios(15);
-        // documento.setIdCategorias(1);
-        // documento.setIdFechasRetencionlegal(1);
-        // documento.setIdUbicacionFisica(1);
-
-        // Insertar el Documento en la base de datos
-        // documentoDao.create(documento);
-
-        // 2. Metodo aprovado | Actualizar un Documento de la base de datos
-        // documentoDao.update(1, "descripcion", "Nueva descripción documento 1");
-        // System.out.println(documento.getIdDocumento());
-
-        // 2. Metodo aprovado | Eliminar el Documento de la base de datos
-        // Eliminar el Documento de la base de datos
-        // documentoDao.delete(2);
-
-        // 2. Metodo aprovado | Obtener un Documento de la base de datos
-        // Obtener un Documento de la base de datos y mostrarlo en consola
-        // Documento getDocumento = documentoDao.get(1);
-        // System.out.println(getDocumento.getTitulo());
-
-        // 2. Metodo aprovado | Obtener todos los Documentos de la base de datos
-        // Obtener todos los Documentos de la base de datos y mostrarlos en consola
-        // for (Documento document : documentoDao.getAll()) {
-        // System.out.println("-----------------------");
-        // System.out.println(document.getIdDocumento());
-        // System.out.println(document.getTitulo());
-        // System.out.println("-----------------------");
-        // }
+        System.out.println(new CategoriaDao(connection).getAll());
 
     }
 
