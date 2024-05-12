@@ -26,13 +26,13 @@
 </servlet-mapping>
 
 <servlet>
-    <servlet-name>DocumentController</servlet-name>
-    <servlet-class>com.docudigitalsds.controller.DocumentController</servlet-class>
+    <servlet-name>CategoryController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.CategoryController</servlet-class>
 </servlet>
 
 <servlet-mapping>
-    <servlet-name>DocumentController</servlet-name>
-    <url-pattern>/DocumentController</url-pattern>
+    <servlet-name>CategoryController</servlet-name>
+    <url-pattern>/CategoryController</url-pattern>
 </servlet-mapping>
 
 <servlet>

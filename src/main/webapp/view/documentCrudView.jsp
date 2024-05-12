@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ page import="java.util.*" %>
+<%@ page import="com.docudigitalsds.model.entities.gestionDocumento.Categoria" %>
 
 <!DOCTYPE html>
 <html data-theme="dark">
@@ -56,8 +57,6 @@
                                         aria-label="Modo claro" value="cupcake" /></li>
                             </ul>
                         </div>
-                        
-
 
                         <button class="btn btn-s btn-info btn-outline h-5 ml-3">
                             <span class="material-symbols-outlined">Event</span>
@@ -88,11 +87,12 @@
                     <h2 class="text-lg font-bold">Categorias</h2>
                     <p>En este panel puedes agregar, modificar y eliminar las categorias que se pueden asignar a los documentos.</p>
 
-                    <form action="/docudigitalsds/DocumentController" method="post">
+                    <form action="/docudigitalsds/CategoryController" method="post">
                         <div class="join w-full flex mt-5">
                             <div class="flex-grow">
                                 <div>
                                     <input name="nuevaCategoria" class="input input-bordered join-item w-full" placeholder="Ingresa el nombre de la categoria" />
+                                    <input type="hidden" name="action" value="create" />
                                 </div>
                             </div>
                             <div>
@@ -114,34 +114,80 @@
                             </thead>
                             <tbody>
 
-                                <% List<String> categoryNameList = (List<String>) session.getAttribute("categoryNameList"); %>
+                                <% 
+                                List<Categoria> categories = (List<Categoria>) request.getAttribute("categoryNameList");
+                                if (categories != null) {
+                                    for(Categoria category : categories) {
+                                %>
 
-                                <% if (categoryNameList != null && !categoryNameList.isEmpty()) { %>
-
-                                    <% for (String categoryName : categoryNameList) { %>
                                         <tr>
                                             <!-- Muestra cada nombre de categoría dentro de la columna correspondiente -->
-                                            <td><%= categoryName %></td>
+                                            <td><%= category.getNombre() %></td>
                                             <td class="pr-0">
                                                 <div class="flex justify-end gap-4">
 
                                                     <!-- Botón de editar con modal -->
-                                                    <button class="btn btn-sm text-primary" onclick="openModal('<%= categoryName %>')">Editar</button>
+                                                    <button class="btn btn-sm text-primary" onclick="openModal('<%= category.getNombre() %>', '<%= category.getIdCategoria() %>')">Editar</button>
+
+                                                    <!-- Script para abrir el modal con el nombre de la categoría -->
+                                                    <script>
+                                                        function openModal(categoryName, categoryId) { // Agregar categoryId como parámetro
+                                                            var modal = document.getElementById('editModal');
+                                                            
+                                                            document.getElementById('categoryId').value = categoryId; 
+                                                            document.getElementById('editCategoryNameInput').value = categoryName;
+
+                                                            modal.showModal();
+                                                        }
+                                                    </script>
+
+                                                    <!-- Modal -->
+                                                    <dialog id="editModal" class="modal">
+                                                        <div class="modal-box pb-7">
+                                                            <h3 class="font-bold text-lg pb-5">Editar Categoría</h3>
+
+                                                            <form action="/docudigitalsds/CategoryController" method="post">
+
+                                                                <input type="hidden" name="action" value="update" />
+                                                                <input type="hidden" name="idCategoria" id="categoryId" />
+
+                                                                <input type="text" name="nombreCategoria" id="editCategoryNameInput" placeholder="Nuevo nombre" class="input input-bordered w-full max-w " />
+                                                                
+                                                                <div class="card-actions justify-end pt-7">
+                                                                    <button type="submit" class="btn ml-5 btn-sm btn-success">
+                                                                        Guardar
+                                                                    </button>
+                                                                </div>
+
+                                                            </form>
+
+                                                        </div>
+                                                        <form method="dialog" class="modal-backdrop">
+                                                            <button>close</button>
+                                                        </form>
+                                                    </dialog>
 
                                                     <!-- Botón de eliminar -->
-                                                    <button class="btn btn-sm text-error mr-5">Eliminar</button>
+                                                    
+
+                                                    <form action="/docudigitalsds/CategoryController" method="post">
+                                                        <input type="hidden" name="action" value="delete" />
+                                                        <input type="hidden" name="idCategoria" value="<%= category.getIdCategoria() %>" />
+                                                        <button type="submit" class="btn btn-sm text-error mr-5">Eliminar</button>
+                                                    </form>
+
+                                                   
                                                     
                                                 </div>
                                             </td>
                                         </tr>
-                                    <% } // Fin del bucle for %>
-                                <% } else { %>
-                                    <!-- Si la lista está vacía o nula, muestra un mensaje o realiza alguna acción alternativa -->
-                                    <tr>
-                                        <td colspan="2">No hay categorías disponibles</td>
-                                    </tr>
-                                <% } // Fin de la condición if %>
-                                <% // Fin del scriptlet Java %>
+
+                                <% 
+                                    }
+                                }
+                                %>
+
+                                
                             </tbody>
                             
                         </table>
@@ -197,44 +243,6 @@
             </ul>
         </div>
     </div>
-
-    <!-- Modal -->
-    <dialog id="editModal" class="modal">
-        <div class="modal-box pb-7">
-            <h3 class="font-bold text-lg pb-5">Editar Categoría</h3>
-
-            <form action="/docudigitalsds/DocumentController" method="post">
-
-                <input type="hidden" name="idCategoria" id="categoryId" />
-
-                <input type="text" name="editCategoryName" id="editCategoryNameInput" placeholder="Nuevo nombre" class="input input-bordered w-full max-w " />
-                
-                <div class="card-actions justify-end pt-7">
-
-                    <button type="submit" class="btn ml-5 btn-sm btn-success">
-                        Guardar
-                    </button>
-
-                </div>
-
-            </form>
-
-        </div>
-        <form method="dialog" class="modal-backdrop">
-            <button>close</button>
-        </form>
-    </dialog>
-
-    <!-- Script para abrir el modal con el nombre de la categoría -->
-    <script>
-        function openModal(categoryName, categoryId) { // Agregar categoryId como parámetro
-            var modal = document.getElementById('editModal');
-            modal.showModal();
-            document.getElementById('editCategoryNameInput').value = categoryName;
-            document.getElementById('categoryId').value = categoryId; // Usar el ID de la categoría pasado como parámetro
-        }
-    </script>
-
 
 </body>
 

@@ -19,7 +19,9 @@ public class AppTest {
 
         CategoriaDao categoriaDao = new CategoriaDao(connection);
 
-        categoriaDao.update(69, "nombre", "123");
+        categoriaDao.update(97, "nombre", "test update");
+
+        //categoriaDao.update(69, "nombre", "123");
 
     }
 
