@@ -8,9 +8,10 @@ D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\entities\gestionPrestamo\Prestamo.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\daoImplementations\gestionUsuarioDao\RolDao.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\daoImplementations\gestionUsuarioDao\UsuarioDao.java
+D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\controller\DocumentController.java
+D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\services\DefaultService.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\services\UserService.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\daoImplementations\gestionDocumentoDao\DocumentoDao.java
-D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\services\BaseService.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\Dao.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\daoImplementations\gestionDocumentoDao\CategoriaDao.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\services\AdminService.java

@@ -13,13 +13,13 @@ public class AppTest {
         AppTest.connection = dbConnection.getConnection();
     }
 
-    
-
     public static void main(String[] args) {
 
         new AppTest();
 
-        System.out.println(new CategoriaDao(connection).getAll());
+        CategoriaDao categoriaDao = new CategoriaDao(connection);
+
+        categoriaDao.update(69, "nombre", "123");
 
     }
 

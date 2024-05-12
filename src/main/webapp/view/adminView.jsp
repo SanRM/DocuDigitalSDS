@@ -54,7 +54,7 @@
                             </ul>
                         </div>
                         
-                        <button class="btn btn-s btn-warning btn-outline h-5 ml-3" onclick="location.href='/docudigitalsds/view/documentCrudView.jsp';">
+                        <button class="btn btn-s btn-warning btn-outline h-5 ml-3" onclick="location.href='/docudigitalsds/DocumentController';">
                             <span class="material-symbols-outlined">Description</span>
                             Documentos
                         </button>

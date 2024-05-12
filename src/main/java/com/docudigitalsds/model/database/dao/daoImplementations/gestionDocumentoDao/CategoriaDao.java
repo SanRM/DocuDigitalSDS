@@ -4,6 +4,8 @@ import com.docudigitalsds.model.database.dao.Dao;
 import com.docudigitalsds.model.entities.gestionDocumento.Categoria;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDao extends Dao<Categoria> {
 
@@ -39,6 +41,22 @@ public class CategoriaDao extends Dao<Categoria> {
     @Override
     protected String getIdColumnName() {
         return "idCategoria";
+    }
+
+    public List<String> getCategoryNameList() {
+        List<String> nombres = new ArrayList<>();
+        for (Categoria categoria : getAll()) {
+            nombres.add(categoria.getNombre());
+        }
+        return nombres;
+    }
+
+    public List<Integer> getCategoryIdList() {
+        List<Integer> ids = new ArrayList<>();
+        for (Categoria categoria : getAll()) {
+            ids.add(categoria.getIdCategoria());
+        }
+        return ids;
     }
 
 }
