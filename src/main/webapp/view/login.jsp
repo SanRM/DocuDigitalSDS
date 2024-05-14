@@ -42,7 +42,7 @@
                     </ul>
                 </div>
                 
-                <button class="btn btn-s h-5 ml-3" onclick="location.href='/docudigitalsds/view/adminView.html';">
+                <button class="btn btn-s h-5 ml-3" onclick="location.href='/docudigitalsds/view/homeView.html';">
                     <span class="material-symbols-outlined">home</span>
                     Página principal
                 </button>

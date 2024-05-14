@@ -14,20 +14,20 @@ public class FechaRetencionLegalDao extends Dao<FechaRetencionLegal> {
     @Override
     protected FechaRetencionLegal createEntityFromResultSet(ResultSet rs) throws SQLException {
         FechaRetencionLegal fechaRetencionLegal = new FechaRetencionLegal();
-        fechaRetencionLegal.setIdRetencionLegal(rs.getInt("legalRetentionid"));
-        fechaRetencionLegal.setFechaRetencionFinal(rs.getTimestamp("FinalRetentionDate"));
-        fechaRetencionLegal.setDescripcion(rs.getString("description"));
+        fechaRetencionLegal.setIdRetencionLegal(rs.getInt("idRetencionLegal"));
+        fechaRetencionLegal.setFechaRetencionFinal(rs.getTimestamp("FechaRetencionFinal"));
+        fechaRetencionLegal.setDescripcion(rs.getString("descripcion"));
         return fechaRetencionLegal;
     }
 
     @Override
     protected String getTableName() {
-        return "fechaRetencionLegal";
+        return "fechasretencioneslegales";
     }
 
     @Override
     protected String getInsertStatement() {
-        return "INSERT INTO fechaRetencionLegal (FinalRetentionDate, description) VALUES (?, ?)";
+        return "INSERT INTO fechasretencioneslegales (FechaRetencionFinal, descripcion) VALUES (?, ?)";
     }
 
     @Override

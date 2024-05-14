@@ -30,6 +30,18 @@ public class DefaultService {
         getDocumentosPorUbicacionYCategoria();
     }
 
+    public void getCategoryNameList() {
+
+        CategoriaDao categoriaDao = new CategoriaDao(connection);
+        List<String> categoryNameList = categoriaDao.getCategoryNameList();
+        List<Integer> categoryIdList = categoriaDao.getCategoryIdList();
+
+        System.out.println("Category Name List: " + categoryNameList); // Debug code
+        System.out.println("Category ID: " + categoryIdList); // Debug code
+        request.getSession().setAttribute("categoryList", categoryNameList);
+        request.getSession().setAttribute("categoryIdList", categoryIdList);
+    }
+
     protected void getDocumentosPorUbicacionYCategoria() {
 
         DocumentoDao documentoDao = new DocumentoDao(connection);

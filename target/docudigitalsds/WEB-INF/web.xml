@@ -7,7 +7,7 @@
 
 <servlet>
     <servlet-name>LoginController</servlet-name>
-    <servlet-class>com.docudigitalsds.controller.LoginController</servlet-class>
+    <servlet-class>com.docudigitalsds.controller.viewsController.LoginController</servlet-class>
 </servlet>
 
 <servlet-mapping>
@@ -16,23 +16,33 @@
 </servlet-mapping>
 
 <servlet>
-    <servlet-name>AdminController</servlet-name>
-    <servlet-class>com.docudigitalsds.controller.AdminController</servlet-class>
+    <servlet-name>HomeController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.viewsController.HomeController</servlet-class>
 </servlet>
 
 <servlet-mapping>
-    <servlet-name>AdminController</servlet-name>
-    <url-pattern>/AdminController</url-pattern>
+    <servlet-name>HomeController</servlet-name>
+    <url-pattern>/HomeController</url-pattern>
 </servlet-mapping>
 
 <servlet>
     <servlet-name>CategoryController</servlet-name>
-    <servlet-class>com.docudigitalsds.controller.CategoryController</servlet-class>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.CategoryController</servlet-class>
 </servlet>
 
 <servlet-mapping>
     <servlet-name>CategoryController</servlet-name>
     <url-pattern>/CategoryController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>FechaRetencionLegalController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.FechaRetencionLegalController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>FechaRetencionLegalController</servlet-name>
+    <url-pattern>/FechaRetencionLegalController</url-pattern>
 </servlet-mapping>
 
 <servlet>
