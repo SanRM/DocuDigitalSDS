@@ -26,6 +26,16 @@
 </servlet-mapping>
 
 <servlet>
+    <servlet-name>DocumentController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.DocumentController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>DocumentController</servlet-name>
+    <url-pattern>/DocumentController</url-pattern>
+</servlet-mapping>
+
+<servlet>
     <servlet-name>CategoryController</servlet-name>
     <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.CategoryController</servlet-class>
 </servlet>
@@ -36,13 +46,23 @@
 </servlet-mapping>
 
 <servlet>
-    <servlet-name>FechaRetencionLegalController</servlet-name>
-    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.FechaRetencionLegalController</servlet-class>
+    <servlet-name>LegalRetentionDateController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.LegalRetentionDateController</servlet-class>
 </servlet>
 
 <servlet-mapping>
-    <servlet-name>FechaRetencionLegalController</servlet-name>
-    <url-pattern>/FechaRetencionLegalController</url-pattern>
+    <servlet-name>LegalRetentionDateController</servlet-name>
+    <url-pattern>/LegalRetentionDateController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>PhysicalLocationsController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.PhysicalLocationsController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>PhysicalLocationsController</servlet-name>
+    <url-pattern>/PhysicalLocationsController</url-pattern>
 </servlet-mapping>
 
 <servlet>

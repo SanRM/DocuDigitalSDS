@@ -33,7 +33,7 @@
                     <div class="join w-full flex mt-5">
                         <div class="flex-grow">
                             <div>
-                                <input name="nuevaCategoria" class="input input-bordered join-item w-full" placeholder="Ingresa el nombre de la categoria" />
+                                <input name="nuevaCategoria" class="input input-bordered join-item w-full" placeholder="Ingresa el nombre de la categoria" required/>
                                 <input type="hidden" name="action" value="create" />
                             </div>
                         </div>
@@ -50,6 +50,7 @@
                         <!-- head -->
                         <thead>
                             <tr class="bg-base-200">
+                                <th>Id</th>
                                 <th>Categoria</th>
                                 <th></th>
                                
@@ -63,8 +64,9 @@
                                 for(Categoria category : categories) {
                             %>
 
-                                    <tr>
+                                    <tr class="bg-base-100">
                                         <!-- Muestra cada nombre de categoría dentro de la columna correspondiente -->
+                                        <td><%= category.getIdCategoria() %></td>
                                         <td><%= category.getNombre() %></td>
                                         <td class="pr-0">
                                             <div class="flex justify-end gap-4">

@@ -23,7 +23,7 @@
 
             <div id="navbar"></div>
 
-            <!-- 2. PANEL RETENCIONES LEGALES -->
+            <!-- 2. PANEL FECHAS RETENCIONES LEGALES -->
             <div class="bg-base-300 p-5 rounded-lg content-top m-5">
 
                 <h2 class="text-lg font-bold">Fechas legales de retención</h2>
@@ -39,7 +39,7 @@
                         </div>
                         <div class="flex-grow">
                             <div>
-                                <input name="descripcion" class="input input-bordered join-item w-full" placeholder="Ingresa la descripción" required />
+                                <input name="descripcion" class="input input-bordered join-item w-full" placeholder="Ingresa la descripción de la nueva fecha de retención" required />
                                 <input type="hidden" name="action" value="create" />
                             </div>
                         </div>
@@ -56,7 +56,8 @@
                         <!-- head -->
                         <thead>
                             <tr class="bg-base-200">
-                                <th>Fechas de retencion legal</th>
+                                <th>Id</th>
+                                <th>Fechas legales de retencion</th>
                                 <th>Descripción</th>
                                 <th></th>
                                 
@@ -77,8 +78,10 @@
 
                             %>
 
-                                <tr>
+                                <tr class="bg-base-100">
                                     <!-- Muestra cada descripción dentro de la columna correspondiente -->
+                                    <td><%= idRetencionLegal %></td>
+
                                     <td><%= fechaRetencionFinal.substring(0, fechaRetencionFinal.length() - 5) %></td>
 
                                     <td><%= descripcion %></td>

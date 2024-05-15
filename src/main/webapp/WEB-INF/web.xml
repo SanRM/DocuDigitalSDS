@@ -26,6 +26,16 @@
 </servlet-mapping>
 
 <servlet>
+    <servlet-name>DocumentController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.DocumentController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>DocumentController</servlet-name>
+    <url-pattern>/DocumentController</url-pattern>
+</servlet-mapping>
+
+<servlet>
     <servlet-name>CategoryController</servlet-name>
     <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.CategoryController</servlet-class>
 </servlet>

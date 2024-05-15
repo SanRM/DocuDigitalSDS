@@ -8,7 +8,7 @@ public class Documento {
     private Timestamp fechaCreacion;
     private Timestamp fechaUltimaEdicion;
     private String descripcion;
-    private double tamaño;
+    private long tamaño;
     private int numeroDeFolios;
     private int idCategorias;
     private int idFechasRetencionlegal;
@@ -60,7 +60,7 @@ public class Documento {
         return tamaño;
     }
 
-    public void setTamaño(double tamaño) {
+    public void setTamaño(long tamaño) {
         this.tamaño = tamaño;
     }
 

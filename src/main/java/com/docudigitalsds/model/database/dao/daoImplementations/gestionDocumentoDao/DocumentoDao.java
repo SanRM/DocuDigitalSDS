@@ -19,12 +19,12 @@ public class DocumentoDao extends Dao<Documento> {
         documento.setFechaCreacion(rs.getTimestamp("fechaCreacion"));
         documento.setFechaUltimaEdicion(rs.getTimestamp("fechaUltimaEdicion"));
         documento.setDescripcion(rs.getString("descripcion"));
-        documento.setTamaño(rs.getDouble("tamaño"));
+        documento.setArchivo(rs.getBytes("archivo"));
+        documento.setTamaño(rs.getLong("tamaño"));
         documento.setNumeroDeFolios(rs.getInt("numeroDeFolios"));
         documento.setIdCategorias(rs.getInt("idCategorias"));
         documento.setIdFechasRetencionlegal(rs.getInt("idFechasRetencionlegal"));
         documento.setIdUbicacionFisica(rs.getInt("idUbicacionFisica"));
-        documento.setArchivo(rs.getBytes("archivo"));
         return documento;
     }
 
@@ -35,8 +35,9 @@ public class DocumentoDao extends Dao<Documento> {
 
     @Override
     protected String getInsertStatement() {
-        return "INSERT INTO documentos (titulo, fechaCreacion, fechaUltimaEdicion, descripcion, tamaño, numeroDeFolios, idCategorias, idFechasRetencionlegal, idUbicacionFisica) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        return "INSERT INTO documentos (titulo, fechaCreacion, fechaUltimaEdicion, descripcion, archivo, tamaño, numeroDeFolios, idCategorias, idFechasRetencionlegal, idUbicacionFisica) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     }
+    
 
     @Override
     protected void setInsertStatementParameters(PreparedStatement ps, Documento documento) throws SQLException {
@@ -44,12 +45,12 @@ public class DocumentoDao extends Dao<Documento> {
         ps.setTimestamp(2, documento.getFechaCreacion());
         ps.setTimestamp(3, documento.getFechaUltimaEdicion());
         ps.setString(4, documento.getDescripcion());
-        ps.setDouble(5, documento.getTamaño());
-        ps.setInt(6, documento.getNumeroDeFolios());
-        ps.setInt(7, documento.getIdCategorias());
-        ps.setInt(8, documento.getIdFechasRetencionlegal());
-        ps.setInt(9, documento.getIdUbicacionFisica());
-        ps.setBytes(10, documento.getArchivo());
+        ps.setBytes(5, documento.getArchivo());
+        ps.setDouble(6, documento.getTamaño());
+        ps.setInt(7, documento.getNumeroDeFolios());
+        ps.setInt(8, documento.getIdCategorias());
+        ps.setInt(9, documento.getIdFechasRetencionlegal());
+        ps.setInt(10, documento.getIdUbicacionFisica());
     }
 
     @Override
