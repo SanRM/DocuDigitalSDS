@@ -93,9 +93,47 @@
                 
                         <div class="flex-grow">
                             <div>
-                                <input name="archivo" type="file" class="file-input file-input-bordered join-item w-full file-input-default" required/>                            
+                                <input id="archivo" name="archivo" type="file" class="file-input file-input-bordered join-item w-full file-input-default" required/>                            
                             </div>
                         </div>
+
+                        <script>
+                            // Obtener el elemento de entrada de archivo
+                            const fileInput = document.getElementById('archivo');
+                            // Escuchar el evento change en el input de archivo
+                            fileInput.addEventListener('change', function() {
+                                const file = fileInput.files[0];
+                                if (file) {
+                                    const extension = file.name.split('.').pop().toLowerCase();
+                        
+                                    // Verificar si la extensión del archivo es PDF
+                                    if (extension != 'pdf') {
+                                        fileInput.value = null;
+                                        const modal = document.getElementById('errorModal');
+                                        modal.showModal();
+                                    }
+                                } 
+                            });
+
+                        </script>
+                        
+                        <!-- Modal -->
+                        <dialog id="errorModal" class="modal">
+                            <div class="modal-box card w-96 bg-error p-0 text-primary-content">
+                                <form>
+                                    <div class="card-body">
+                                        <h2 class="card-title text-3xl">Error</h2>
+                                        <p>Debes subir un archivo tipo PDF</p>
+                                        <div class="card-actions justify-end">
+                                            <button class="btn" onclick="document.getElementById('errorModal').close();">Cerrar</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <form method="dialog" class="modal-backdrop">
+                                <button>close</button>
+                            </form>
+                        </dialog>
                 
                         <div>
                             <input type="hidden" name="action" value="create" />

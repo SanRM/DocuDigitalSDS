@@ -1,11 +1,14 @@
 package com.docudigitalsds.controller.gestionDocumentoControlller;
 
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.Timestamp;
 import java.time.LocalDateTime;
 import java.util.List;
+
+import org.apache.pdfbox.pdmodel.PDDocument;
 
 import com.docudigitalsds.model.database.DatabaseConnection;
 import com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao.CategoriaDao;
@@ -96,7 +99,7 @@ public class DocumentController extends HttpServlet {
         request.setAttribute("fechasRetencionLegales", fechasRetencionLegales);
     }
 
-    private void createDocument(HttpServletRequest request) throws IOException, ServletException {
+    public void createDocument(HttpServletRequest request) throws IOException, ServletException {
         System.err.println("Solicitud de creación de documento");
     
         String titulo = request.getParameter("titulo");
@@ -105,34 +108,47 @@ public class DocumentController extends HttpServlet {
         String descripcion = request.getParameter("descripcion");
         Part archivo = request.getPart("archivo");
         long tamaño = archivo.getSize();
-        int numeroDeFolios = 0;
         Integer categoria = Integer.parseInt(request.getParameter("categoria"));
         Integer fechaRetencionLegal = Integer.parseInt(request.getParameter("fechaRetencionLegal"));
         Integer ubicacionFisica = Integer.parseInt(request.getParameter("ubicacionFisica"));
     
-        if (titulo != null && !titulo.isEmpty() ) {
+        if ("application/pdf".equals(archivo.getContentType())) {
             Documento documento = new Documento();
             documento.setTitulo(titulo);
             documento.setFechaCreacion(fechaCrecion);
             documento.setFechaUltimaEdicion(fechaUltimaEdicion);
             documento.setDescripcion(descripcion);
             documento.setTamaño(tamaño);
-            documento.setNumeroDeFolios(numeroDeFolios);
             documento.setIdCategorias(categoria);
             documento.setIdFechasRetencionlegal(fechaRetencionLegal);
             documento.setIdUbicacionFisica(ubicacionFisica);
     
             InputStream inputStream = archivo.getInputStream();
-            byte[] bytes = new byte[(int) archivo.getSize()];
+            byte[] bytes = new byte[(int) tamaño];
             inputStream.read(bytes);
             documento.setArchivo(bytes); 
-
+    
+            // Load the PDF and get the number of pages
+            try (PDDocument pdf = PDDocument.load(bytes)) {
+                int numeroDeFolios = pdf.getNumberOfPages();
+                documento.setNumeroDeFolios(numeroDeFolios);
+            }
+    
             try {
                 documentoDao.create(documento);
                 System.err.println("Documento creado con éxito");
             } catch (Exception e) {
                 e.printStackTrace();
             }
+    
+        } else if (tamaño == 0) {
+    
+            System.err.println("El está vacio");
+    
+        } else {
+    
+            System.err.println("El archivo no es un PDF");
+    
         }
     }
 

@@ -49,14 +49,14 @@ public class CategoryController extends HttpServlet {
     }
 
 
-    private void getCategories(HttpServletRequest request) {
+    public void getCategories(HttpServletRequest request) {
 
         List<Categoria> categories = categoriaDao.getAll();
         request.setAttribute("categoryNameList", categories);
 
     }
 
-    private void createCategory(HttpServletRequest request) {
+    public void createCategory(HttpServletRequest request) {
 
         String nombre = request.getParameter("nuevaCategoria");
 
