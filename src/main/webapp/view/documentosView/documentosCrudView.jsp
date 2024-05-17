@@ -156,10 +156,10 @@
                                 <th>Fecha de creación</th>
                                 <th>Última edición</th>
                                 <th>Tamaño del documento</th>
-                                <th class="w-10">Núm. Páginas</th>
+                                <th>Núm. Páginas</th>
                                 <th>Categoría</th>
                                 <th>Fecha retención legal</th>
-                                <th>Ubicación fisica</th>
+                                <th>Ubicación</th>
                                 <th>Documento</th>
                                 <th></th>
                             </tr>
@@ -187,7 +187,9 @@
                                         <td>
                                             
                                             <a href="data:application/pdf;base64, <%= document.getArchivoBase64() %>" download="<%= document.getTitulo() %>">
-                                                Descargar PDF
+                                                <button class="btn btn-s h-5 text-success">
+                                                    <span class="material-symbols-outlined">description</span>
+                                                </button>
                                             </a>
                                             
                                         </td>
@@ -277,6 +279,7 @@
         </div>
     </div>
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
             // Carga la barra de navegación desde el archivo navbar.html
