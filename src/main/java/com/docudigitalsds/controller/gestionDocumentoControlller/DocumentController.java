@@ -83,7 +83,7 @@ public class DocumentController extends HttpServlet {
         request.setAttribute("categoryNameList", categories);
 
     }
-
+    
     private void getPhysicalLocations(HttpServletRequest request) {
 
         UbicacionFisicaDao ubicacionFisicaDao = new UbicacionFisicaDao(connection);
@@ -100,6 +100,7 @@ public class DocumentController extends HttpServlet {
     }
 
     public void createDocument(HttpServletRequest request) throws IOException, ServletException {
+
         System.err.println("Solicitud de creación de documento");
     
         String titulo = request.getParameter("titulo");
@@ -141,15 +142,7 @@ public class DocumentController extends HttpServlet {
                 e.printStackTrace();
             }
     
-        } else if (tamaño == 0) {
-    
-            System.err.println("El está vacio");
-    
-        } else {
-    
-            System.err.println("El archivo no es un PDF");
-    
-        }
+        } 
     }
 
     private void updateDocument(HttpServletRequest request) {

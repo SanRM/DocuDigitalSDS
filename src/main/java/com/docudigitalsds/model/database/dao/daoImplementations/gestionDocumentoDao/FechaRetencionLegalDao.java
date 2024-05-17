@@ -32,7 +32,7 @@ public class FechaRetencionLegalDao extends Dao<FechaRetencionLegal> {
 
     @Override
     protected void setInsertStatementParameters(PreparedStatement ps, FechaRetencionLegal fechaRetencionLegal) throws SQLException {
-        ps.setTimestamp(1, fechaRetencionLegal.getFechaRetencionFinal());
+        ps.setTimestamp(1, fechaRetencionLegal.getFechaRetencionFinalAsTimestamp());
         ps.setString(2, fechaRetencionLegal.getDescripcion());
     }
 
@@ -41,4 +41,23 @@ public class FechaRetencionLegalDao extends Dao<FechaRetencionLegal> {
         return "idRetencionLegal";
     }
     
+    public String getFechaDeRetencionNameById(int categoryId) {
+
+        String DateName = null;
+        String sql = "SELECT FechaRetencionFinal FROM fechasretencioneslegales WHERE idRetencionLegal = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, categoryId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    DateName = rs.getString("FechaRetencionFinal");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return DateName;
+    }
+
 }

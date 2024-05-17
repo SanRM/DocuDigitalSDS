@@ -1,6 +1,7 @@
 package com.docudigitalsds.model.entities.gestionDocumento;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 
 public class FechaRetencionLegal {
     private int idRetencionLegal;
@@ -16,7 +17,12 @@ public class FechaRetencionLegal {
         this.idRetencionLegal = idRetencionLegal;
     }
 
-    public Timestamp getFechaRetencionFinal() {
+    public String getFormattedFechaRetencionFinal() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(FechaRetencionFinal);
+    }
+
+    public Timestamp getFechaRetencionFinalAsTimestamp() {
         return FechaRetencionFinal;
     }
 

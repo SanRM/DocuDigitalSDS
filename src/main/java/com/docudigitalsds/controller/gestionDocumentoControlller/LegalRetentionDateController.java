@@ -55,32 +55,23 @@ public class LegalRetentionDateController extends HttpServlet {
     }
 
     private void createFechaRetencionLegal(HttpServletRequest request) {
-
-        System.out.println("La fecha de retencion legal es: " + request.getParameter("fechaRetencionFinal"));
     
         String fechaRetencionFinalStr = request.getParameter("fechaRetencionFinal");
-        
-        if (fechaRetencionFinalStr != null && fechaRetencionFinalStr.length() == 16) {
-            fechaRetencionFinalStr = fechaRetencionFinalStr.replace("T", " ") + ":00";
-        }
-    
-        Timestamp fechaRetencionFinal = Timestamp.valueOf(fechaRetencionFinalStr);
         String descripcion = request.getParameter("descripcion");
-    
-        if (descripcion != null && !descripcion.isEmpty() && fechaRetencionFinal != null) {
-    
-            FechaRetencionLegal fechaRetencionLegal = new FechaRetencionLegal();
-    
-            fechaRetencionLegal.setFechaRetencionFinal(fechaRetencionFinal);
-            fechaRetencionLegal.setDescripcion(descripcion);
-            
-            try {
-                fechaRetencionLegalDao.create(fechaRetencionLegal);
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-            
+
+        Timestamp fechaRetencionFinal = Timestamp.valueOf(fechaRetencionFinalStr.replace("T", " ") + ":00");
+
+        FechaRetencionLegal fechaRetencionLegal = new FechaRetencionLegal();
+        fechaRetencionLegal.setFechaRetencionFinal(fechaRetencionFinal);
+        fechaRetencionLegal.setDescripcion(descripcion);
+        
+        try {
+            fechaRetencionLegalDao.create(fechaRetencionLegal);
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        
     }
 
     private void updateFechaRetencionLegal(HttpServletRequest request) {

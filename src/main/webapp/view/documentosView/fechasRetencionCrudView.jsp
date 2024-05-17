@@ -73,7 +73,7 @@
                                     for(FechaRetencionLegal fechaRetencionLegal : fechasRetencionLegales) {
 
                                         Integer idRetencionLegal = fechaRetencionLegal.getIdRetencionLegal();
-                                        String fechaRetencionFinal = fechaRetencionLegal.getFechaRetencionFinal().toString();
+                                        String fechaRetencionFinal = fechaRetencionLegal.getFormattedFechaRetencionFinal();
                                         String descripcion = fechaRetencionLegal.getDescripcion();
 
                             %>
@@ -82,7 +82,7 @@
                                     <!-- Muestra cada descripción dentro de la columna correspondiente -->
                                     <td><%= idRetencionLegal %></td>
 
-                                    <td><%= fechaRetencionFinal.substring(0, fechaRetencionFinal.length() - 5) %></td>
+                                    <td><%= fechaRetencionFinal %></td>
 
                                     <td><%= descripcion %></td>
                                     

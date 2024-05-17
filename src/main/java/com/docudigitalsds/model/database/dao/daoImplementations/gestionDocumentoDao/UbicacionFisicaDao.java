@@ -41,4 +41,23 @@ public class UbicacionFisicaDao extends Dao<UbicacionFisica> {
         return "idUbicacionFisica";
     }
     
+    public String getUbicacionFisicaById(int categoryId) {
+
+        String LocationName = null;
+        String sql = "SELECT nombre FROM ubicacionFisica WHERE idUbicacionFisica = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, categoryId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    LocationName = rs.getString("nombre");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return LocationName;
+    }
+
 }

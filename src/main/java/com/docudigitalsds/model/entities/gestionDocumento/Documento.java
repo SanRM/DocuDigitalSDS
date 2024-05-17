@@ -1,6 +1,16 @@
 package com.docudigitalsds.model.entities.gestionDocumento;
 
 import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
+
+import com.docudigitalsds.model.database.DatabaseConnection;
+import com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao.CategoriaDao;
+import com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao.FechaRetencionLegalDao;
+import com.docudigitalsds.model.database.dao.daoImplementations.gestionDocumentoDao.UbicacionFisicaDao;
+
+import java.util.Base64;
+
+import java.sql.Connection;
 
 public class Documento {
     private int idDocumento;
@@ -32,7 +42,12 @@ public class Documento {
         this.titulo = titulo;
     }
 
-    public Timestamp getFechaCreacion() {
+    public String getFechaCreacion() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(fechaCreacion);
+    }
+
+    public Timestamp getFechaCreacionFinalAsTimestamp() {
         return fechaCreacion;
     }
 
@@ -40,10 +55,15 @@ public class Documento {
         this.fechaCreacion = fechaCreacion;
     }
 
-    public Timestamp getFechaUltimaEdicion() {
-        return fechaUltimaEdicion;
+    public String getFechaUltimaEdicion() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        return sdf.format(fechaUltimaEdicion);
     }
 
+    public Timestamp getFechaUltimaEdicionFinalAsTimestamp() {
+        return fechaUltimaEdicion;
+    }
+    
     public void setFechaUltimaEdicion(Timestamp fechaUltimaEdicion) {
         this.fechaUltimaEdicion = fechaUltimaEdicion;
     }
@@ -60,6 +80,33 @@ public class Documento {
         return tamaño;
     }
 
+    public String getTamañoFormateado() {
+        double tamañoBytes = this.tamaño;
+        String tamañoFormateado;
+    
+        // Convertir a KB si el tamaño es mayor que 1024 bytes
+        if (tamaño >= 1024) {
+            tamañoBytes /= 1024;
+            // Convertir a MB si el tamaño es mayor que 1024 KB
+            if (tamañoBytes >= 1024) {
+                tamañoBytes /= 1024;
+                // Convertir a GB si el tamaño es mayor que 1024 MB
+                if (tamañoBytes >= 1024) {
+                    tamañoBytes /= 1024;
+                    tamañoFormateado = String.format("%.2f GB", tamañoBytes);
+                } else {
+                    tamañoFormateado = String.format("%.2f MB", tamañoBytes);
+                }
+            } else {
+                tamañoFormateado = String.format("%.2f KB", tamañoBytes);
+            }
+        } else {
+            tamañoFormateado = String.format("%.2f bytes", tamañoBytes);
+        }
+    
+        return tamañoFormateado;
+    }
+
     public void setTamaño(long tamaño) {
         this.tamaño = tamaño;
     }
@@ -74,6 +121,33 @@ public class Documento {
 
     public int getIdCategorias() {
         return idCategorias;
+    }
+
+    public String getNombreCategoria(){
+
+        DatabaseConnection dbConnection = new DatabaseConnection();
+        Connection connection = dbConnection.getConnection();
+        CategoriaDao categoriaDao = new CategoriaDao(connection);
+        return categoriaDao.getCategoryNameById(this.idCategorias);
+
+    }
+
+    public String getNombreUbicacionFisica(){
+
+        DatabaseConnection dbConnection = new DatabaseConnection();
+        Connection connection = dbConnection.getConnection();
+        UbicacionFisicaDao ubicacionFisicaDao = new UbicacionFisicaDao(connection);
+        return ubicacionFisicaDao.getUbicacionFisicaById(this.idUbicacionFisica);
+
+    }
+
+    public String getNombreFechaRetencion(){
+
+        DatabaseConnection dbConnection = new DatabaseConnection();
+        Connection connection = dbConnection.getConnection();
+        FechaRetencionLegalDao fechaRetencionLegalDao = new FechaRetencionLegalDao(connection);
+        return fechaRetencionLegalDao.getFechaDeRetencionNameById(this.idFechasRetencionlegal);
+
     }
 
     public void setIdCategorias(int idCategorias) {
@@ -98,6 +172,10 @@ public class Documento {
 
     public byte[] getArchivo() {
         return archivo;
+    }
+
+    public String getArchivoBase64() {
+        return archivo != null ? Base64.getEncoder().encodeToString(archivo) : null;
     }
 
     public void setArchivo(byte[] archivo) {

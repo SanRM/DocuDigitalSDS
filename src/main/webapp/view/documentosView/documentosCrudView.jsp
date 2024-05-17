@@ -70,7 +70,7 @@
                             if (fechasRetencionLegales != null) {
                                 for(FechaRetencionLegal fechaRetencionLegal : fechasRetencionLegales) {
                             %>
-                                <option value="<%= fechaRetencionLegal.getIdRetencionLegal() %>"><%= fechaRetencionLegal.getFechaRetencionFinal().toString() %></option>
+                                <option value="<%= fechaRetencionLegal.getIdRetencionLegal() %>"><%= fechaRetencionLegal.getFormattedFechaRetencionFinal().toString() %></option>
                             <% 
                                 }
                             }
@@ -156,10 +156,11 @@
                                 <th>Fecha de creación</th>
                                 <th>Última edición</th>
                                 <th>Tamaño del documento</th>
-                                <th>Número de folios/páginas</th>
+                                <th class="w-10">Núm. Páginas</th>
                                 <th>Categoría</th>
-                                <th>Fecha de retención legal</th>
+                                <th>Fecha retención legal</th>
                                 <th>Ubicación fisica</th>
+                                <th>Documento</th>
                                 <th></th>
                             </tr>
                         </thead>
@@ -178,11 +179,18 @@
                                         <td><%= document.getDescripcion() %></td>
                                         <td><%= document.getFechaCreacion() %></td>
                                         <td><%= document.getFechaUltimaEdicion() %></td>
-                                        <td><%= document.getTamaño() %></td>
+                                        <td><%= document.getTamañoFormateado() %></td>
                                         <td><%= document.getNumeroDeFolios() %></td>
-                                        <td><%= document.getIdCategorias() %></td>
-                                        <td><%= document.getIdFechasRetencionlegal() %></td>
-                                        <td><%= document.getIdUbicacionFisica() %></td>
+                                        <td><%= document.getNombreCategoria() %></td>
+                                        <td><%= document.getNombreFechaRetencion() %></td>
+                                        <td><%= document.getNombreUbicacionFisica() %></td>
+                                        <td>
+                                            
+                                            <a href="data:application/pdf;base64, <%= document.getArchivoBase64() %>" download="<%= document.getTitulo() %>">
+                                                Descargar PDF
+                                            </a>
+                                            
+                                        </td>
                                         
                                         <td class="pr-0">
                                             <div class="flex justify-end gap-4">
@@ -202,7 +210,7 @@
                                                             <input type="hidden" name="idDocumento" id="documentId" />
 
                                                             <input type="text" name="tituloDocumento" id="editDocumentTitleInput" placeholder="Nuevo título" class="input input-bordered w-full max-w " />
-                                                            
+                                                        
                                                             <div class="card-actions justify-end pt-7">
                                                                 <button type="submit" class="btn ml-5 btn-sm btn-success">
                                                                     Guardar
@@ -286,6 +294,7 @@
             document.getElementById('editDocumentTitleInput').value = documentTitle;
             modal.showModal();
         }
+
     </script>
 
 </body>

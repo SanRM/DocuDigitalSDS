@@ -59,4 +59,23 @@ public class CategoriaDao extends Dao<Categoria> {
         return ids;
     }
 
+    public String getCategoryNameById(int categoryId) {
+
+        String categoryName = null;
+        String sql = "SELECT nombre FROM categorias WHERE idCategoria = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, categoryId);
+            try (ResultSet rs = ps.executeQuery()) {
+                if (rs.next()) {
+                    categoryName = rs.getString("nombre");
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return categoryName;
+    }
+
 }

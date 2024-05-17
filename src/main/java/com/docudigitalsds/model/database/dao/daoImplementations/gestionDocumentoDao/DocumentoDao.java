@@ -42,8 +42,8 @@ public class DocumentoDao extends Dao<Documento> {
     @Override
     protected void setInsertStatementParameters(PreparedStatement ps, Documento documento) throws SQLException {
         ps.setString(1, documento.getTitulo());
-        ps.setTimestamp(2, documento.getFechaCreacion());
-        ps.setTimestamp(3, documento.getFechaUltimaEdicion());
+        ps.setTimestamp(2, documento.getFechaCreacionFinalAsTimestamp());
+        ps.setTimestamp(3, documento.getFechaUltimaEdicionFinalAsTimestamp());
         ps.setString(4, documento.getDescripcion());
         ps.setBytes(5, documento.getArchivo());
         ps.setDouble(6, documento.getTamaño());
