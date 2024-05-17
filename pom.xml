@@ -64,19 +64,8 @@
 
   <build>
     <finalName>docudigitalsds</finalName>
+    <pluginManagement><!-- lock down plugins versions to avoid using Maven defaults (may be moved to parent pom) -->
       <plugins>
-      <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.2.2</version>
-            <configuration>
-                <archive>
-                    <manifest>
-                        <mainClass>com.docudigitalsds.controller.viewsController.LoginController</mainClass> <!-- Reemplaza con la clase principal de tu aplicación -->
-                    </manifest>
-                </archive>
-            </configuration>
-        </plugin>
         <plugin>
           <artifactId>maven-clean-plugin</artifactId>
           <version>3.1.0</version>
@@ -95,13 +84,25 @@
           <version>2.22.1</version>
         </plugin>
         <plugin>
+          <artifactId>maven-war-plugin</artifactId>
+          <version>3.2.2</version>
+        </plugin>
+        <plugin>
           <artifactId>maven-install-plugin</artifactId>
           <version>2.5.2</version>
+          <configuration>
+            <archive>
+                <manifest>
+                    <mainClass>com.docudigitalsds.controller.viewsController.LoginController</mainClass> <!-- Reemplaza con la clase principal de tu aplicación -->
+                </manifest>
+            </archive>
+          </configuration>
         </plugin>
         <plugin>
           <artifactId>maven-deploy-plugin</artifactId>
           <version>2.8.2</version>
         </plugin>
       </plugins>
+    </pluginManagement>
   </build>
 </project>
