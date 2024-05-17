@@ -1,0 +1,72 @@
+<!DOCTYPE web-app PUBLIC
+ "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+ "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app>
+  <display-name>Archetype Created Web Application</display-name>
+
+<servlet>
+    <servlet-name>LoginController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.viewsController.LoginController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>LoginController</servlet-name>
+    <url-pattern>/LoginController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>HomeController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.viewsController.HomeController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>HomeController</servlet-name>
+    <url-pattern>/HomeController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>DocumentController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.DocumentController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>DocumentController</servlet-name>
+    <url-pattern>/DocumentController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>CategoryController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.CategoryController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>CategoryController</servlet-name>
+    <url-pattern>/CategoryController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>LegalRetentionDateController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.LegalRetentionDateController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>LegalRetentionDateController</servlet-name>
+    <url-pattern>/LegalRetentionDateController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>PhysicalLocationsController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.gestionDocumentoControlller.PhysicalLocationsController</servlet-class>
+</servlet>
+
+<servlet-mapping>
+    <servlet-name>PhysicalLocationsController</servlet-name>
+    <url-pattern>/PhysicalLocationsController</url-pattern>
+</servlet-mapping>
+
+<welcome-file-list>
+    <welcome-file>view/welcome.html</welcome-file>
+</welcome-file-list>
+  
+</web-app>
