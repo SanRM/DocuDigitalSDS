@@ -72,7 +72,7 @@
             <configuration>
                 <archive>
                     <manifest>
-                        <mainClass>com.docudigitalsds.controller.viewsController.HomeController</mainClass> <!-- Reemplaza con la clase principal de tu aplicación -->
+                        <mainClass>com.docudigitalsds.controller.viewsController.LoginController</mainClass> <!-- Reemplaza con la clase principal de tu aplicación -->
                     </manifest>
                 </archive>
             </configuration>
