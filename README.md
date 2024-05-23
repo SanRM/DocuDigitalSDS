@@ -19,3 +19,17 @@ El desarrollo del proyecto sigue prácticas comunes en el desarrollo de software
 
 - **MVC (Modelo-Vista-Controlador)**: La arquitectura del proyecto sigue este patrón para una organización clara y modular del código.
 - **DAO (Data Access Object)**: Se utiliza este patrón para encapsular la lógica de acceso a datos y proporcionar una interfaz uniforme para interactuar con la base de datos.
+
+## Imágenes de muestra
+
+### Login
+<img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/login.png"></img>
+
+## Inicio del sitio una vez autenticado
+<img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/main.png"></img> 
+
+## Navbar 
+<img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/navbar.png"></img>
+
+## Edición de documentos (CRUD)
+<img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/document_Crud.png"><img>
