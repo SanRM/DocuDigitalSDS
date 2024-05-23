@@ -86,5 +86,8 @@ public class Usuario {
         this.idRoles = idRoles;
     }
 
-    
+    public boolean emailValido() {
+        return email.contains("@");
+    }
+
 }
