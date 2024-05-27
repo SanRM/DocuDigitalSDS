@@ -1,3 +1,5 @@
+package com.docudigitalsds.test;
+
 import java.sql.Connection;
 
 import com.docudigitalsds.model.database.DatabaseConnection;
