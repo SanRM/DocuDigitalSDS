@@ -25,11 +25,11 @@ El desarrollo del proyecto sigue prácticas comunes en el desarrollo de software
 ### Login
 <img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/login.png"></img>
 
-## Inicio del sitio una vez autenticado
+## Inicio del sitio una vez autenticado - Rol administrador
 <img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/main.png"></img> 
 
-## Navbar 
+## Navbar - Rol administrador
 <img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/navbar.png"></img>
 
-## Edición de documentos (CRUD)
+## Edición de documentos (CRUD) - Rol administrador
 <img src="https://github.com/SanRM/DocuDigitalSDS/blob/main/src/main/webapp/view/images/document_Crud.png"><img>
