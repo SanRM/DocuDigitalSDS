@@ -197,35 +197,114 @@
                                         <td class="pr-0">
                                             <div class="flex justify-end gap-4">
 
-                                                <!-- Botón de editar con modal -->
-                                                <button class="btn btn-sm text-primary" onclick="openModal('<%= document.getTitulo() %>', '<%= document.getIdDocumento() %>')">Editar</button>
+                <!-- Botón de editar con modal -->
+                <button class="btn btn-sm text-primary" onclick="openEditModal('<%= document.getTitulo() %>', '<%= document.getIdDocumento() %>', '<%= document.getDescripcion() %>')">Editar</button>
 
-                                                <!-- Modal -->
-                                                <dialog id="editModal" class="modal">
-                                                    <div class="modal-box pb-7">
-                                                        <h3 class="font-bold text-lg pb-5">Editar Documento</h3>
+                <script>
+                    function openEditModal(documentTitle, documentId, documentDescription) {
 
-                                                        <form action="/docudigitalsds/DocumentController" method="post">
+                        var modal = document.getElementById('editModal');
 
-                                                            <input type="hidden" name="action" value="update" />
+                        var editDocumentIdInput = document.getElementById('editDocumentId');
+                        var editDocumentTitleInput = document.getElementById('editDocumentTitleInput');
+                        var editDocumentDescriptionInput = document.getElementById('editDocumentDescriptionInput');
 
-                                                            <input type="hidden" name="idDocumento" id="documentId" />
+                        editDocumentIdInput.value = documentId;
+                        editDocumentTitleInput.value = documentTitle;
+                        editDocumentDescriptionInput.value = documentDescription;
 
-                                                            <input type="text" name="tituloDocumento" id="editDocumentTitleInput" placeholder="Nuevo título" class="input input-bordered w-full max-w " />
-                                                        
-                                                            <div class="card-actions justify-end pt-7">
-                                                                <button type="submit" class="btn ml-5 btn-sm btn-success">
-                                                                    Guardar
-                                                                </button>
-                                                            </div>
+                        modal.showModal();
+                    }
+                </script>
 
-                                                        </form>
 
-                                                    </div>
-                                                    <form method="dialog" class="modal-backdrop">
-                                                        <button>close</button>
-                                                    </form>
-                                                </dialog>
+                <!-- Modal -->
+                <dialog id="editModal" class="modal">
+                    <div class="modal-box pb-7">
+                        <h3 class="font-bold text-lg ">Editar Documento</h3>
+
+                        <!-- Formulario de edición de documento -->
+                        <form action="/docudigitalsds/DocumentController" method="post" enctype="multipart/form-data" class="modal-content">
+
+                            <input type="hidden" name="action" value="update" />
+
+                            <input type="hidden" id="editDocumentId" name="idDocumento" />
+
+                            <div class="join w-full flex mt-5">
+                                <div class="flex-grow">
+                                    <input id="editDocumentTitleInput" name="titulo" class="input input-bordered join-item w-full" required />
+                                </div>
+                                <div class="flex-grow">
+                                    <input id="editDocumentDescriptionInput" name="descripcion" class="input input-bordered join-item w-full"  required />
+                                </div>
+                            </div>
+                            
+                            <div class="w-full mt-5">
+                                <input id="archivo" name="archivo" type="file" class="file-input file-input-bordered w-full file-input-default" required />
+                            </div>
+
+                            <div class="w-full mt-5">
+                                <select name="categoria" class="select select-bordered join-item w-full" required>
+                                    <option disabled selected hidden value="">Categoría</option>
+                                    <% 
+                                    List<Categoria> categories2 = (List<Categoria>) request.getAttribute("categoryNameList");
+                                    if (categories2 != null) {
+                                        for(Categoria category2 : categories2) {
+                                    %>
+                                        <option value="<%= category2.getIdCategoria() %>"> <%= category2.getNombre() %></option>
+                                    <% 
+                                        }
+                                    }
+                                    %>
+                                </select>
+                            </div>
+                            
+                            <div class="w-full mt-5">
+                                <select name="fechaRetencionLegal" class="select select-bordered join-item w-full" required>
+                                    <option disabled selected hidden value="">Fecha de retención legal</option>
+                                    <% 
+                                    List<FechaRetencionLegal> fechasRetencionLegales2 = (List<FechaRetencionLegal>) request.getAttribute("fechasRetencionLegales");
+                                    if (fechasRetencionLegales2 != null) {
+                                        for(FechaRetencionLegal fechaRetencionLegal : fechasRetencionLegales2) {
+                                    %>
+                                        <option value="<%= fechaRetencionLegal.getIdRetencionLegal() %>"><%= fechaRetencionLegal.getFormattedFechaRetencionFinal().toString() %></option>
+                                    <% 
+                                        }
+                                    }
+                                    %>
+                                </select>
+                            </div>
+                            
+                            <div class="w-full mt-5">
+                                <select name="ubicacionFisica" class="select select-bordered join-item w-full" required>
+                                    <option disabled selected hidden value="">Ubicación física</option>
+                                    <% 
+                                    List<UbicacionFisica> physicalLocations2 = (List<UbicacionFisica>) request.getAttribute("physicalLocationList");
+                                    if (physicalLocations2 != null) {
+                                        for(UbicacionFisica location : physicalLocations2) {
+                                    %>
+                                        <option value="<%= location.getIdUbicacionFisica() %>"> <%= location.getNombre() %></option>
+                                    <% 
+                                        }
+                                    }
+                                    %>
+                                </select>
+                            </div>
+                            
+
+
+
+                            <div class="w-full mt-5">
+                                <input type="hidden" name="action" value="update" />
+                                <button type="submit" class="btn w-full text-accent">Guardar</button>
+                            </div>
+                            
+                        </form>
+                    </div>
+                    <form method="dialog" class="modal-backdrop">
+                        <button>close</button>
+                    </form>
+                </dialog>
 
                                                 <!-- Botón de eliminar -->
                                                 <form action="/docudigitalsds/DocumentController" method="post">
@@ -289,14 +368,6 @@
                 document.getElementById('navbar').innerHTML = html;
             });
         });
-
-        // Script para abrir el modal con el título del documento
-        function openModal(documentTitle, documentId) { 
-            var modal = document.getElementById('editModal');
-            document.getElementById('documentId').value = documentId; 
-            document.getElementById('editDocumentTitleInput').value = documentTitle;
-            modal.showModal();
-        }
 
     </script>
 

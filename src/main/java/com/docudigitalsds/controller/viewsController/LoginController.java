@@ -22,17 +22,9 @@ public class LoginController extends HttpServlet {
         if (usuario != null) {
 
             request.getSession().setAttribute("successMessage", "Inicio de sesión exitoso.");
-
-            if (usuario.getIdRoles() == 1) {
-
-                response.sendRedirect("/docudigitalsds/HomeController");
-
-            } else if (usuario.getIdRoles() == 2) {
-
-                //response.sendRedirect("/docudigitalsds/UserController");
-           
-            }
-
+            request.getSession().setAttribute("userRole", usuario.getIdRoles());
+            response.sendRedirect("/docudigitalsds/HomeController");
+            
         } else {
 
             request.getSession().setAttribute("errorMessage", "El inicio de sesión falló. Por favor, intenta de nuevo.");

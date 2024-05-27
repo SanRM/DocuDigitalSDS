@@ -22,21 +22,51 @@
 
         <ul class="menu menu-horizontal items-center">
             <!-- Navbar menu content here -->
-            <div class="dropdown dropdown-end">
-                <div tabindex="0" role="button" class="btn">
-                    Cambiar tema
-                    <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
-                        <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
-                    </svg>
+            <div id="dropdown" class="dropdown dropdown-hover ml-3 dropdown-end">
+
+                <div role="button" class="btn">
+                    <span class="material-symbols-outlined">Palette</span>
+                    Tema
+                    <svg width="12px" height="12px" class="h-2 w-2 fill-current opacity-60 inline-block"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048">
+                    <path d="M1799 349l242 241-1017 1017L7 590l242-241 775 775 775-775z"></path>
+                </svg>
                 </div>
-                <ul tabindex="0" class="dropdown-content z-[1] p-2 shadow-2xl bg-base-300 rounded-box w-52">
-                    <li><input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                            aria-label="Modo oscuro" value="default" /></li>
-                    <li><input type="radio" name="theme-dropdown"
-                            class="theme-controller btn btn-sm btn-block btn-ghost justify-start"
-                            aria-label="Modo claro" value="cupcake" /></li>
+
+                <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box">
+
+                    <li>
+                        <label>
+                            <input type="radio" name="theme-buttons" class="btn theme-controller" aria-label="Modo oscuro" value="night" hidden>
+                            <span class="material-symbols-outlined"><span class="material-symbols-outlined">
+                                dark_mode
+                                </span></span>
+                            Intenso
+                        </label>
+                    </li>
+
+                    <li>
+                        <label>
+                            <input type="radio" name="theme-buttons" class="btn theme-controller" aria-label="Modo oscuro" value="default" hidden>
+                            <span class="material-symbols-outlined">nights_stay</span>
+                            Equilibrado
+                        </label>
+                    </li>
+                    
+                    <li>
+                        <label>
+                            <input type="radio" name="theme-buttons" class="btn theme-controller" aria-label="Sunset" value="dim" hidden>
+                            <span class="material-symbols-outlined"><span class="material-symbols-outlined">
+                                brightness_high
+                                </span></span>
+                            Tenue
+                        </label>
+                    </input>
+                    </li>
+
+
                 </ul>
+
             </div>
 
             <button class="btn btn-outline btn-success h-53 ml-3" onclick="location.href='/docudigitalsds/view/login.jsp';">

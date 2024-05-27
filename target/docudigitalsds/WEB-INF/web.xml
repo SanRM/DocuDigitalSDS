@@ -10,6 +10,20 @@
     <servlet-class>com.docudigitalsds.controller.viewsController.LoginController</servlet-class>
 </servlet>
 
+
+LogoutController
+
+<servlet-mapping>
+    <servlet-name>LogoutController</servlet-name>
+    <url-pattern>/LogoutController</url-pattern>
+</servlet-mapping>
+
+<servlet>
+    <servlet-name>LogoutController</servlet-name>
+    <servlet-class>com.docudigitalsds.controller.viewsController.LogoutController</servlet-class>
+</servlet>
+
+
 <servlet-mapping>
     <servlet-name>LoginController</servlet-name>
     <url-pattern>/LoginController</url-pattern>

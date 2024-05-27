@@ -74,62 +74,65 @@
 
             </div>
 
-            <div id="dropdown" class="dropdown dropdown-hover ml-3">
+            <% if (session.getAttribute("userRole") != null && session.getAttribute("userRole").equals(1)) { %>
+                    
+                <div id="dropdown" class="dropdown dropdown-hover ml-3">
 
-                <div role="button" class="btn btn-warning btn-outline" onclick="location.href='/docudigitalsds/DocumentController';">
-                    <span class="material-symbols-outlined">Description</span>
-                    Documentos
+                    <div role="button" class="btn btn-warning btn-outline" onclick="location.href='/docudigitalsds/DocumentController';">
+                        <span class="material-symbols-outlined">Description</span>
+                        Documentos
+                    </div>
+
+                    <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li onclick="location.href='/docudigitalsds/CategoryController';">
+                            <a>
+                                <span class="material-symbols-outlined text-warning">Bookmark</span>
+                                Categorias
+                            </a>
+                        </li>
+                        <li onclick="location.href='/docudigitalsds/LegalRetentionDateController';"> 
+                            <a>
+                                <span class="material-symbols-outlined text-warning">Event</span>
+                                Fechas de retención
+                            </a>
+                        </li>
+                        <li onclick="location.href='/docudigitalsds/PhysicalLocationsController';">
+                            <a>
+                                <span class="material-symbols-outlined text-warning">Map</span>
+                                Ubicaciones fisicas
+                            </a class="text-warning">
+                        </li>
+                    </ul>
+
                 </div>
 
-                <ul tabindex="0" class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li onclick="location.href='/docudigitalsds/CategoryController';">
-                        <a>
-                            <span class="material-symbols-outlined text-warning">Bookmark</span>
-                            Categorias
-                        </a>
-                    </li>
-                    <li onclick="location.href='/docudigitalsds/LegalRetentionDateController';"> 
-                        <a>
-                            <span class="material-symbols-outlined text-warning">Event</span>
-                            Fechas de retención
-                        </a>
-                    </li>
-                    <li onclick="location.href='/docudigitalsds/PhysicalLocationsController';">
-                        <a>
-                            <span class="material-symbols-outlined text-warning">Map</span>
-                            Ubicaciones fisicas
-                        </a class="text-warning">
-                    </li>
-                </ul>
-
-            </div>
-
-            <button class="btn btn-s btn-info btn-outline h-5 ml-3">
-                <span class="material-symbols-outlined">Handshake</span>
-                Préstamos
-            </button>
+                <button class="btn btn-s btn-info btn-outline h-5 ml-3">
+                    <span class="material-symbols-outlined">Handshake</span>
+                    Préstamos
+                </button>
 
 
-            <div id="dropdown" class="dropdown dropdown-hover ml-3">
+                <div id="dropdown" class="dropdown dropdown-hover ml-3">
 
-                <div role="button" class="btn btn-accent btn-outline">
-                    <span class="material-symbols-outlined">Person</span>
-                    Usuarios
+                    <div role="button" class="btn btn-accent btn-outline">
+                        <span class="material-symbols-outlined">Person</span>
+                        Usuarios
+                    </div>
+
+                    <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
+                        <li>
+                            <a>
+                                <span class="material-symbols-outlined text-accent"> manage_accounts</span>
+                                Roles
+                            </a>
+                        </li>
+                    </ul>
+
                 </div>
 
-                <ul class="dropdown-content z-[1] menu p-2 shadow bg-base-100 rounded-box w-52">
-                    <li>
-                        <a>
-                            <span class="material-symbols-outlined text-accent"> manage_accounts</span>
-                            Roles
-                        </a>
-                    </li>
-                </ul>
+            <% } %>
 
-            </div>
-
-
-            <button class="btn btn-outline btn-error h-5 ml-3">
+            <button class="btn btn-outline btn-error h-5 ml-3" onclick="location.href='/docudigitalsds/LogoutController';">
                 <span class="material-symbols-outlined">Logout</span>
                 Cerrar sesión
             </button>

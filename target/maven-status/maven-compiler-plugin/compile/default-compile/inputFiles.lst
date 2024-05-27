@@ -17,6 +17,7 @@ D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\Dao.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\controller\gestionDocumentoControlller\LegalRetentionDateController.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\database\dao\daoImplementations\gestionDocumentoDao\CategoriaDao.java
+D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\controller\viewsController\LogoutController.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\controller\viewsController\HomeController.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\entities\gestionUsuario\Usuario.java
 D:\SANTIAGO\Desarrollo de Software SENA\Proyecto\DocuDigitalSDS - Código fuente\src\main\java\com\docudigitalsds\model\entities\gestionDocumento\UbicacionFisica.java
