@@ -36,13 +36,22 @@ jobs:
     environment:
       name: 'Production'
       url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
-    
+    permissions:
+      id-token: write #This is required for requesting the JWT
+
     steps:
       - name: Download artifact from build job
         uses: actions/download-artifact@v3
         with:
           name: java-app
       
+      - name: Login to Azure
+        uses: azure/login@v1
+        with:
+          client-id: ${{ secrets.AZUREAPPSERVICE_CLIENTID_D727073E5697498EADE8C53B43CB8FFE }}
+          tenant-id: ${{ secrets.AZUREAPPSERVICE_TENANTID_A60DB4E8AD1D4EB195AE5240697323AD }}
+          subscription-id: ${{ secrets.AZUREAPPSERVICE_SUBSCRIPTIONID_A925FD5B0BA24E368A20E537CBA10368 }}
+
       - name: Deploy to Azure Web App
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
@@ -50,4 +59,4 @@ jobs:
           app-name: 'DocuDigitalSDS'
           slot-name: 'Production'
           package: '*.war'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_25168A90DAAF41E088C4011C840F5EF6 }}
+          
