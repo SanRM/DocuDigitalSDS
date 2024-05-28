@@ -13,9 +13,9 @@ public class DatabaseConnection {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            String url = "jdbc:mysql://localhost:3306/docudigitalsds";
-            String user = "root";
-            String password = "santiago1000274066";
+            String url = System.getenv("DB_URL");
+            String user = System.getenv("DB_USER");
+            String password = System.getenv("DB_PASSWORD");
 
             this.connection = DriverManager.getConnection(url, user, password);
             System.out.println("Connected to database...");
