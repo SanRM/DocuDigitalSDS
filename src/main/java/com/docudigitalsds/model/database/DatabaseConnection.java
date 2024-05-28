@@ -13,7 +13,7 @@ public class DatabaseConnection {
         System.out.println(System.getProperty("java.class.path"));
 
         // Imprimir todas las claves de las variables de entorno
-        System.out.println("Environment variables:");
+        System.out.println("MySQL Environment variables:");
         System.out.println("DB_URL: " + System.getenv("DB_URL"));
         System.out.println("DB_USER: " + System.getenv("DB_USER"));
         System.out.println("DB_PASSWORD: " + System.getenv("DB_PASSWORD"));
