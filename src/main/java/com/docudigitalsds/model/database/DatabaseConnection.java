@@ -3,7 +3,6 @@ package com.docudigitalsds.model.database;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
 public class DatabaseConnection {
 
     private Connection connection;
@@ -15,9 +14,9 @@ public class DatabaseConnection {
 
         // Imprimir todas las claves de las variables de entorno
         System.out.println("Environment variables:");
-        for (String envName : System.getenv().keySet()) {
-            System.out.println(envName);
-        }
+        System.out.println("DB_URL: " + System.getenv("DB_URL"));
+        System.out.println("DB_USER: " + System.getenv("DB_USER"));
+        System.out.println("DB_PASSWORD: " + System.getenv("DB_PASSWORD"));
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
