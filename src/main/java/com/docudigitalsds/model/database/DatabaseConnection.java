@@ -10,6 +10,15 @@ public class DatabaseConnection {
 
     public DatabaseConnection() {
 
+        // Imprimir el classpath
+        System.out.println(System.getProperty("java.class.path"));
+
+        // Imprimir todas las claves de las variables de entorno
+        System.out.println("Environment variables:");
+        for (String envName : System.getenv().keySet()) {
+            System.out.println(envName);
+        }
+
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
